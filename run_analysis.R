@@ -45,10 +45,9 @@ subject <- rbind(subjecttest,subjecttrain)
 
 compactdata1 <- cbind(compactdata1,subject)
 names(compactdata1)[88]<- "person"
-#apply aggregate function to each column?  
-#?group_by; ?summarise_each; numcolwise(mean)
+
 library(dplyr)
 compactdata2 <- group_by(compactdata1,person,exercise)
 compactdata3 <- summarise_each(compactdata2,funs(mean))
 write.table(compactdata3,file="tidydata.txt",row.name=FALSE)
-save(compactdata1,file="compactdata1.RData")
+
