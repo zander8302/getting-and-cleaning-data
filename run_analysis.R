@@ -45,8 +45,8 @@ subject <- rbind(subjecttest,subjecttrain)
 
 compactdata1 <- cbind(compactdata1,subject)
 names(compactdata1)[88]<- "person"
-
 library(dplyr)
+compactdata1 <- tbl_df(compactdata1)
 compactdata2 <- group_by(compactdata1,person,exercise)
 compactdata3 <- summarise_each(compactdata2,funs(mean))
 write.table(compactdata3,file="tidydata.txt",row.name=FALSE)
